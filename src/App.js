@@ -10,11 +10,12 @@ import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 
 export default function App() {
-  const apiUrl = "https://nc-news-ae-solo.herokuapp.com/api";
+  const api = "https://nc-news-ae-solo.herokuapp.com/api";
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage api={apiUrl} />}></Route>
+        <Route path="/" element={<Homepage api={api} />}></Route>
       </Routes>
     </BrowserRouter>
   );
