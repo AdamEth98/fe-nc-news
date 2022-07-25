@@ -5,17 +5,19 @@ import "./css/reset.css";
 import "./css/app.css";
 
 // components
-import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
+import Topics from "./pages/Topics";
+import ArticlesByTopic from "./Pages/ArticlesByTopic";
 
 export default function App() {
-  const api = "https://nc-news-ae-solo.herokuapp.com/api";
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage api={api} />}></Route>
+        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/topics" element={<Topics />}></Route>
+        <Route path="/topics/:topic" element={<ArticlesByTopic />}></Route>
       </Routes>
     </BrowserRouter>
   );
