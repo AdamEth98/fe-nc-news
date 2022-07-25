@@ -1,0 +1,26 @@
+.topic-card {
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.topic-card-con {
+  background-color: #fff;
+  border: 1px solid rgb(211, 211, 211);
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+}
+
+.topic-card-con > h2 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.topic-card-con > p {
+  opacity: 0.8;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}

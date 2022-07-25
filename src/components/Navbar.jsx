@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "../css/nav.css"
 
 export default function Navbar(){
@@ -6,7 +7,7 @@ export default function Navbar(){
       <div className="container nav-con">
         <a className="nav-title" href="/">nc-news</a>
         <ul className="nav-links">
-          <li><a href="/">Topics</a></li>
+          <li><Link to={"/topics"}>Topics</Link></li>
         </ul>
       </div>
     </nav>
