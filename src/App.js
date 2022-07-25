@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+// css
+import "./css/reset.css";
+import "./css/app.css";
+
+// components
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+import Homepage from "./pages/Homepage";
+
+export default function App() {
+  const apiUrl = "https://nc-news-ae-solo.herokuapp.com/api";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage api={apiUrl} />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
