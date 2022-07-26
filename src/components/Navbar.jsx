@@ -5,7 +5,7 @@ export default function Navbar(){
   return (
     <nav>
       <div className="container nav-con">
-        <a className="nav-title" href="/">nc-news</a>
+        <Link className="nav-title" to="/">nc-news</Link>
         <ul className="nav-links">
           <li><Link to={"/topics"}>Topics</Link></li>
         </ul>

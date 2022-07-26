@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "../css/article-card.css"
 
 export default function ArticleCard({article}){
@@ -16,7 +17,7 @@ export default function ArticleCard({article}){
           </div>
         </div>
           <div className="article-card-link">
-            <a href="/">Read Article -&#62;</a>
+            <Link to={`/article/${article.article_id}`}>Read Article -&#62;</Link>
           </div>
       </section>
     </article>

@@ -28,9 +28,7 @@ export default function Topics(){
     </>
     :
     <>
-      <header className="container page-header">
-        <Header title="Topics" />
-      </header>
+      <Header title="Topics" />
       <main>
         <section className="container topic-card">
           {topics.map((topic) => {

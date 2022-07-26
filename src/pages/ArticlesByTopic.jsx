@@ -29,9 +29,7 @@ export default function ArticlesByTopic(){
     </>
     :
     <>
-      <header className="container page-header">
-        <Header title={`Topic: ${topic}`}/>
-      </header>
+      <Header title={topic[0].toUpperCase() + topic.substring(1)}/>
       <main>
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />
