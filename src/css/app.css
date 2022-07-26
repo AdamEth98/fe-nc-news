@@ -11,4 +11,5 @@ body {
 .page-header {
   font-size: 1.75rem;
   padding: 0.5rem 0.5rem 0 0.5rem;
+  box-sizing: border-box;
 }
