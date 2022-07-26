@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
-import "../css/article-card.css"
+import { Link } from "react-router-dom";
+import "../css/article-card.css";
 
-export default function ArticleCard({article}){
+export default function ArticleCard({ article }) {
   return (
     <article className="article-card">
       <section className="article-card-top">
@@ -12,14 +12,16 @@ export default function ArticleCard({article}){
             <p className="article-card-date">{article.created_at.substring(0, 10)}</p>
           </div>
           <div className="article-card-right">
-            <p className="article-card-topic">{article.topic}</p>
+            <p className="article-card-topic">
+              {article.topic ? article.topic[0].toUpperCase() + article.topic.substring(1) : ""}
+            </p>
             <p className="article-card-votes">{article.votes}</p>
           </div>
         </div>
-          <div className="article-card-link">
-            <Link to={`/article/${article.article_id}`}>Read Article -&#62;</Link>
-          </div>
+        <div className="article-card-link">
+          <Link to={`/article/${article.article_id}`}>Read Article -&#62;</Link>
+        </div>
       </section>
     </article>
-  )
+  );
 }

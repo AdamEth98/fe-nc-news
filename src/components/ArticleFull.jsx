@@ -52,7 +52,9 @@ export default function ArticleFull({ article }) {
             <p>{article.created_at ? article.created_at.substring(0, 10) : ""}</p>
           </div>
           <div className="article-info">
-            <Link to={`/topics/${article.topic}`}>{article.topic}</Link>
+            <Link to={`/topics/${article.topic}`}>
+              {article.topic ? article.topic[0].toUpperCase() + article.topic.substring(1) : ""}
+            </Link>
             <div className="article-votes">
               <button id="upvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
                 <i className="fa-solid fa-arrow-up" id="upvote"></i>
