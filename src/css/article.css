@@ -20,3 +20,20 @@
 .article-content {
   line-height: 20px;
 }
+
+.article-votes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.article-votes > i {
+  margin-left: 5px;
+}
+
+#upvote, #downvote {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.25rem;
+}
