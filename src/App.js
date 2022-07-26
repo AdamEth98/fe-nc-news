@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 // css
 import "./css/reset.css";
@@ -12,6 +13,8 @@ import ArticlesByTopic from "./pages/ArticlesByTopic";
 import Article from "./pages/Article";
 
 export default function App() {
+  const [user, setUser] = useState("grumpy19");
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -19,7 +22,7 @@ export default function App() {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/topics" element={<Topics />}></Route>
         <Route path="/topics/:topic" element={<ArticlesByTopic />}></Route>
-        <Route path="/article/:article_id" element={<Article />}></Route>
+        <Route path="/article/:article_id" element={<Article user={user} />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -35,3 +35,30 @@
   padding: 1rem 0.5rem;
   box-sizing: border-box;
 }
+
+form {
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+#comment-text {
+  padding: 0.25rem;
+  width: 80%;
+  box-sizing: border-box;
+  border: 1px solid rgb(211, 211, 211);
+  font-size: 1.2rem;
+  outline: none;
+  margin: 0.25rem 0;
+}
+
+#submit-btn {
+  width: 20%;
+  border: 1px solid rgb(211, 211, 211);
+  background: #fff;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+}
