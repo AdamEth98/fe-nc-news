@@ -27,6 +27,7 @@ export default function Article(){
     :
       <>
         <Header title={article.title} />
+        <i class="fa-solid fa-arrow-up"></i>
         <main>
           <ArticleFull article={article}/>
         </main>
