@@ -1,0 +1,22 @@
+.full-article {
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.article-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid  rgb(211, 211, 211);
+  border-bottom: 1px solid  rgb(211, 211, 211);
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.article-info {
+  text-align: right;
+}
+
+.article-content {
+  line-height: 20px;
+}
