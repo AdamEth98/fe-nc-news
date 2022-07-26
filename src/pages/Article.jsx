@@ -5,7 +5,7 @@ import CommentList from "../components/CommentList";
 import Header from "../components/Header";
 import apiCall from "../utils/apiCall";
 
-export default function Article() {
+export default function Article({ user }) {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +31,7 @@ export default function Article() {
       <Header title={article.title} />
       <main>
         <ArticleFull article={article} />
-        <CommentList id={article.article_id} />
+        <CommentList id={article.article_id} user={user} />
       </main>
     </>
   );
