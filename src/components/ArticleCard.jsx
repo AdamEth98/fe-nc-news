@@ -15,10 +15,11 @@ export default function ArticleCard({ article }) {
             <p className="article-card-topic">
               {article.topic ? article.topic[0].toUpperCase() + article.topic.substring(1) : ""}
             </p>
-            <p className="article-card-votes">{article.votes}</p>
+            <p className="article-card-votes">{article.votes} Votes</p>
           </div>
         </div>
         <div className="article-card-link">
+          <p>{article.comment_count} Comments</p>
           <Link to={`/article/${article.article_id}`}>Read Article -&#62;</Link>
         </div>
       </section>

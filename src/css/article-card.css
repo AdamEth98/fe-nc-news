@@ -44,6 +44,7 @@
 
 .article-card-link {
   width: 100%;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 
