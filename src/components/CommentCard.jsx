@@ -1,7 +1,8 @@
 import { useState } from "react";
 import apiPatch from "../utils/apiPatch";
+import apiDelete from "../utils/apiDelete";
 
-export default function CommentCard({ comment }) {
+export default function CommentCard({ comment, user, setDeletedComment }) {
   // date substring
   const created = comment.created_at.substring(0, 10) || "";
 
@@ -9,6 +10,8 @@ export default function CommentCard({ comment }) {
   const [prevVotes, setPrevVotes] = useState(votes);
   const [error, setError] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
+  const [disableDeleteButton, setDisableDeleteButton] = useState(false);
+  const [isDeleteError, setIsDeleteError] = useState(null);
 
   // handle upvoting/downvoting for comments
   const handleVote = (e) => {
@@ -40,6 +43,19 @@ export default function CommentCard({ comment }) {
       });
   };
 
+  const handleDelete = (e) => {
+    setDisableDeleteButton(true);
+    e.preventDefault();
+    apiDelete(`comments/${comment.comment_id}`)
+      .then(({ status }) => {
+        setDeletedComment(true);
+      })
+      .catch(() => {
+        setDisableDeleteButton(false);
+        setIsDeleteError("Unable to delete comment");
+      });
+  };
+
   return (
     <section className="comment-card">
       <div className="comment-top">
@@ -61,6 +77,18 @@ export default function CommentCard({ comment }) {
       <div className="comment-body">
         <p>{comment.body}</p>
       </div>
+      {user.name === comment.author ? (
+        <>
+          <div className="delete-cont">
+            <button id="delete" onClick={(e) => handleDelete(e)} disabled={disableDeleteButton ? "disabled" : ""}>
+              <i className="fa-solid fa-trash"></i>
+            </button>
+          </div>
+          <div className="delete-error">{isDeleteError ? isDeleteError : ""}</div>
+        </>
+      ) : (
+        ""
+      )}
     </section>
   );
 }

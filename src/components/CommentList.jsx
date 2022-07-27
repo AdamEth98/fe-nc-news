@@ -7,6 +7,7 @@ import CommentForm from "./CommentForm";
 export default function CommentList({ id, user }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState(false);
+  const [deletedComment, setDeletedComment] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -17,16 +18,19 @@ export default function CommentList({ id, user }) {
         });
 
         setComments([...sortedComments]);
+        setDeletedComment(false);
       });
     }
-  }, [id, newComment]);
+  }, [id, newComment, deletedComment]);
 
   return (
     <>
       <h2 className="comment-header">Comments</h2>
       {user && <CommentForm user={user} setNewComment={setNewComment} id={id} />}
       {comments.map((comment) => {
-        return <CommentCard key={comment.comment_id} comment={comment} />;
+        return (
+          <CommentCard user={user} key={comment.comment_id} comment={comment} setDeletedComment={setDeletedComment} />
+        );
       })}
     </>
   );
