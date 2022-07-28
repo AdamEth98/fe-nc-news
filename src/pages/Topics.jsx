@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import TopicCard from "../components/TopicCard";
 import { apiGet } from "../utils/api";
+import Loading from "../components/Loading";
 
 import "../css/topics.css";
-import BadRoute from "./BadRoute";
 
 export default function Topics() {
   // retrieve all topics from api
@@ -22,12 +22,14 @@ export default function Topics() {
   }, []);
 
   // conditional rendering
-  if (isLoading) return <p>Loading topics...</p>;
+  if (isLoading) return <Loading msg="Loading topics..." />;
 
   return (
     <>
-      <Header title="Topics" />
-      <main>
+      <header className="page-header">
+        <Header title="Topics" />
+      </header>
+      <main className="article-card-align">
         <section className="container topic-card">
           {topics.map((topic) => {
             return <TopicCard key={topic.slug} topic={topic} />;

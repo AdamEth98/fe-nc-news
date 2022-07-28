@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
 import { apiGet } from "../utils/api";
 import Sort from "./Sort";
+import Loading from "./Loading";
 
 export default function ArticleList() {
   // store all articles
@@ -22,14 +23,18 @@ export default function ArticleList() {
 
   return isLoading ? (
     <>
-      <p>Loading articles...</p>
+      <Loading msg="Loading articles..." />
     </>
   ) : (
     <>
-      <Sort setArticles={setArticles} />
-      {articles.map((article) => {
-        return <ArticleCard key={article.article_id} article={article} />;
-      })}
+      <section className="sort-align">
+        <Sort setArticles={setArticles} />
+      </section>
+      <main className="article-card-align">
+        {articles.map((article) => {
+          return <ArticleCard key={article.article_id} article={article} />;
+        })}
+      </main>
     </>
   );
 }

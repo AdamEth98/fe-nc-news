@@ -13,6 +13,9 @@ export default function CommentCard({ comment, user, setDeletedComment }) {
   const [isDeleteError, setIsDeleteError] = useState(null);
   const [confirmedDeleted, setConfirmedDeleted] = useState(false);
 
+  // track if comment was upvoted or downvoted (true/false)
+  const [upvoted, setUpvoted] = useState(null);
+
   // handle upvoting/downvoting for comments
   const handleVote = (e) => {
     e.preventDefault();
@@ -26,10 +29,12 @@ export default function CommentCard({ comment, user, setDeletedComment }) {
       inc_votes++;
       setPrevVotes(votes);
       setVotes(votes + 1);
+      setUpvoted(true);
     } else {
       inc_votes--;
       setPrevVotes(votes);
       setVotes(votes - 1);
+      setUpvoted(false);
     }
 
     apiPatch(`comments/${comment.comment_id}`, { inc_votes })
@@ -69,11 +74,21 @@ export default function CommentCard({ comment, user, setDeletedComment }) {
               <p>{created}</p>
             </div>
             <div className="comment-votes">
-              <button id="upvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
+              <button
+                className={upvoted === true ? "upvoted" : null}
+                id="upvote"
+                onClick={(e) => handleVote(e)}
+                disabled={disableButton ? "disabled" : ""}
+              >
                 <i className="fa-solid fa-arrow-up" id="upvote"></i>
               </button>
               <p>{votes}</p>
-              <button id="downvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
+              <button
+                className={upvoted === false ? "downvoted" : null}
+                id="downvote"
+                onClick={(e) => handleVote(e)}
+                disabled={disableButton ? "disabled" : ""}
+              >
                 <i className="fa-solid fa-arrow-down"></i>
               </button>
               {error ? <p>{error}</p> : ""}

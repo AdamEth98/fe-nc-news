@@ -14,7 +14,6 @@
 }
 
 .topic-card-con > h2 {
-  font-weight: 700;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
@@ -23,4 +22,9 @@
   opacity: 0.8;
   font-style: italic;
   margin-bottom: 0.5rem;
+}
+
+.topic-card-con > a {
+  color: #f4a261;
+  font-weight: 700;
 }

@@ -5,6 +5,7 @@ import CommentList from "../components/CommentList";
 import Header from "../components/Header";
 import { apiGet } from "../utils/api";
 import BadRoute from "./BadRoute";
+import Loading from "../components/Loading";
 
 export default function Article({ user }) {
   const [article, setArticle] = useState({});
@@ -30,18 +31,20 @@ export default function Article({ user }) {
   // conditional rendering
 
   if (isLoading) {
-    return <p>Loading article...</p>;
+    return <Loading msg="Loading article..." />;
   }
 
   // show 404 page if no article is found
-  if (!article.hasOwnProperty("title")) {
+  if (!isLoading && !article.hasOwnProperty("title")) {
     return <BadRoute title="404: Article not found." />;
   }
 
   return (
     <>
-      <Header title={article.title} />
-      <main>
+      <header className="page-header">
+        <Header title={article.title} />
+      </header>
+      <main className="article-card-align">
         <ArticleFull article={article} />
         <CommentList id={article.article_id} user={user} />
       </main>

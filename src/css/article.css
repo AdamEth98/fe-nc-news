@@ -19,16 +19,51 @@
 
 .article-content {
   line-height: 20px;
+  font-size: 1.2rem;
+}
+
+
+.author-text {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.author-name {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.date-text {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.article-topic {
+  font-style: italic;
+}
+
+.article-topic-text {
+  color: #f4a261;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.date {
+  font-weight: 700;
+  font-style: normal;
 }
 
 .article-votes {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: center;
 }
 
 .article-votes > i {
   margin-left: 5px;
+  width: 10px;
+  color: #000;
 }
 
 #upvote, #downvote {

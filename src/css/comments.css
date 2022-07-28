@@ -1,3 +1,10 @@
+.comments-cont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .comment-header {
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -44,11 +51,25 @@ form {
   background-color: #fff;
 }
 
+.success, .error {
+  background-color: #2a9d8f;
+  color: #fff;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.error {
+  background-color: #e76f51;
+}
+
 #comment-text {
   padding: 0.25rem;
   width: 80%;
   box-sizing: border-box;
   border: 1px solid rgb(211, 211, 211);
+  border-right: none;
   font-size: 1.2rem;
   outline: none;
   margin: 0.25rem 0;
@@ -56,12 +77,18 @@ form {
 
 #submit-btn {
   width: 20%;
-  border: 1px solid rgb(211, 211, 211);
-  background: #fff;
+  border: 1px solid #264653;
+  background-color: #264653;
   padding: 0.25rem;
   box-sizing: border-box;
   font-size: 1.2rem;
-  color: black;
+  color: #fff;
+  cursor: pointer;
+  border-left: none;
+}
+
+#submit-btn:hover {
+  background-color: #264653;
 }
 
 .delete-cont {
@@ -74,7 +101,8 @@ form {
   background: none;
   border: none;
   font-size: 1.2rem;
-  color:rgb(232, 101, 101)
+  color:rgb(232, 101, 101);
+  cursor: pointer;
 }
 
 .comment-deleted {

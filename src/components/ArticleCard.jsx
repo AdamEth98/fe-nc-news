@@ -3,7 +3,7 @@ import "../css/article-card.css";
 
 export default function ArticleCard({ article }) {
   return (
-    <article className="article-card">
+    <article className="article-card container">
       <section className="article-card-top">
         <h2 className="article-card-title">{article.title}</h2>
         <div className="article-card-middle">
@@ -20,7 +20,9 @@ export default function ArticleCard({ article }) {
         </div>
         <div className="article-card-link">
           <p>{article.comment_count} Comments</p>
-          <Link to={`/article/${article.article_id}`}>Read Article -&#62;</Link>
+          <Link className="article-read-link" to={`/article/${article.article_id}`}>
+            Read Article -&#62;
+          </Link>
         </div>
       </section>
     </article>

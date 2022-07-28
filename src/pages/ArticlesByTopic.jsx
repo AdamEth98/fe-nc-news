@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Sort from "../components/Sort";
 import { apiGet } from "../utils/api";
 import BadRoute from "./BadRoute";
+import Loading from "../components/Loading";
 
 export default function ArticlesByTopic() {
   const [articles, setArticles] = useState([]);
@@ -28,13 +29,17 @@ export default function ArticlesByTopic() {
       });
   }, [topic]);
 
-  if (isLoading) return <p>Loading articles...</p>;
+  if (isLoading) return <Loading msg="Loading articles..." />;
   if (articles.length === 0) return <BadRoute title="404: Topic not found" />;
   return (
     <>
-      <Header title={topic[0].toUpperCase() + topic.substring(1)} />
-      <Sort setArticles={setArticles} />
-      <main>
+      <header className="page-header">
+        <Header title={topic[0].toUpperCase() + topic.substring(1)} />
+      </header>
+      <section className="sort-align">
+        <Sort setArticles={setArticles} />
+      </section>
+      <main className="article-card-align">
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
         })}

@@ -12,6 +12,8 @@ export default function ArticleFull({ article }) {
   const [error, setError] = useState(null);
   // enable/disable buttons after voting
   const [disableButton, setDisableButton] = useState(false);
+  // track if post was upvoted or downvoted (true/false)
+  const [upvoted, setUpvoted] = useState(null);
 
   // make patch request depending on the id of the upvote/downvote button clicked
   const handleVote = (e) => {
@@ -26,10 +28,12 @@ export default function ArticleFull({ article }) {
       inc_votes++;
       setPrevVotes(votes);
       setVotes(votes + 1);
+      setUpvoted(true);
     } else {
       inc_votes--;
       setPrevVotes(votes);
       setVotes(votes - 1);
+      setUpvoted(false);
     }
 
     apiPatch(`articles/${article.article_id}`, { inc_votes })
@@ -48,19 +52,36 @@ export default function ArticleFull({ article }) {
       <article className="full-article container">
         <section className="article-top">
           <div className="article-author">
-            <p>{article.author}</p>
-            <p>{article.created_at ? article.created_at.substring(0, 10) : ""}</p>
+            <p className="author-text">
+              Written by <span className="author-name">{article.author}</span>
+            </p>
+            <p className="date-text">
+              Posted: <span className="date">{article.created_at ? article.created_at.substring(0, 10) : ""}</span>
+            </p>
+            <Link className="article-topic" to={`/topics/${article.topic}`}>
+              Topic:
+              <span className="article-topic-text">
+                {article.topic ? ` ${article.topic[0].toUpperCase() + article.topic.substring(1)}` : ""}
+              </span>
+            </Link>
           </div>
           <div className="article-info">
-            <Link to={`/topics/${article.topic}`}>
-              {article.topic ? article.topic[0].toUpperCase() + article.topic.substring(1) : ""}
-            </Link>
             <div className="article-votes">
-              <button id="upvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
+              <button
+                className={upvoted === true ? "upvoted" : null}
+                id="upvote"
+                onClick={(e) => handleVote(e)}
+                disabled={disableButton ? "disabled" : ""}
+              >
                 <i className="fa-solid fa-arrow-up" id="upvote"></i>
               </button>
               <p>{votes}</p>
-              <button id="downvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
+              <button
+                className={upvoted === false ? "downvoted" : null}
+                id="downvote"
+                onClick={(e) => handleVote(e)}
+                disabled={disableButton ? "disabled" : ""}
+              >
                 <i className="fa-solid fa-arrow-down"></i>
               </button>
             </div>

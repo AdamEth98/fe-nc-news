@@ -11,12 +11,14 @@ export default function Sort({ setArticles }) {
     if (parsedQuery[0] === "comment_count") {
       setArticles((currentArticles) => {
         const sortedArticles = [...currentArticles];
+
         sortedArticles.sort((a, b) => {
           if (parsedQuery[1] === "asc") return a.comment_count - b.comment_count;
           return b.comment_count - a.comment_count;
         });
         return sortedArticles;
       });
+
       // otherwise, just make a new api request with a suitable query
     } else {
       const query = `?sort_by=${parsedQuery[0]}&order=${parsedQuery[1]}`;
@@ -27,7 +29,7 @@ export default function Sort({ setArticles }) {
   };
 
   return (
-    <div className="select-cont">
+    <div className="select-cont container">
       <select onChange={(e) => handleChange(e)}>
         <option value="created_at-desc">{"Date (Descending)"}</option>
         <option value="created_at-asc">{"Date (Ascending)"}</option>
