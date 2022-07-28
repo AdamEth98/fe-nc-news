@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import TopicCard from "../components/TopicCard";
-import apiCall from "../utils/apiCall";
+import { apiGet } from "../utils/api";
 
 import "../css/topics.css";
+import BadRoute from "./BadRoute";
 
 export default function Topics() {
   // retrieve all topics from api
@@ -12,7 +13,7 @@ export default function Topics() {
 
   useEffect(() => {
     setIsLoading(true);
-    apiCall("topics").then(({ status, data }) => {
+    apiGet("topics").then(({ status, data }) => {
       if (status === 200) {
         setTopics([...data.topics]);
         setIsLoading(false);
@@ -20,11 +21,10 @@ export default function Topics() {
     });
   }, []);
 
-  return isLoading ? (
-    <>
-      <p>Loading topics...</p>
-    </>
-  ) : (
+  // conditional rendering
+  if (isLoading) return <p>Loading topics...</p>;
+
+  return (
     <>
       <header className="page-header">
         <Header title="Topics" />

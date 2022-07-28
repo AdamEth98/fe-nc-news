@@ -7,13 +7,16 @@ import "./css/app.css";
 
 // components
 import Navbar from "./components/Navbar";
+
+// pages
 import Homepage from "./pages/Homepage";
 import Topics from "./pages/Topics";
 import ArticlesByTopic from "./pages/ArticlesByTopic";
 import Article from "./pages/Article";
+import BadRoute from "./pages/BadRoute";
 
 export default function App() {
-  const [user, setUser] = useState({
+  const [user] = useState({
     username: "grumpy19",
     name: "Paul Grump",
     avatar_url:
@@ -24,10 +27,11 @@ export default function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage />}></Route>
-        <Route path="/topics" element={<Topics />}></Route>
-        <Route path="/topics/:topic" element={<ArticlesByTopic />}></Route>
-        <Route path="/article/:article_id" element={<Article user={user} />}></Route>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/topics" element={<Topics />} />
+        <Route path="/topics/:topic" element={<ArticlesByTopic />} />
+        <Route path="/article/:article_id" element={<Article user={user} />} />
+        <Route path="*" element={<BadRoute title="404: Page not found." />} />
       </Routes>
     </BrowserRouter>
   );

@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import ArticleCard from "../components/ArticleCard";
 import Header from "../components/Header";
 import Sort from "../components/Sort";
-import apiCall from "../utils/apiCall";
+import { apiGet } from "../utils/api";
+import BadRoute from "./BadRoute";
 
 export default function ArticlesByTopic() {
   const [articles, setArticles] = useState([]);
@@ -15,19 +16,21 @@ export default function ArticlesByTopic() {
   // retrieve all articles for a specific topic
   useEffect(() => {
     setIsLoading(true);
-    apiCall(`articles?topic=${topic}`).then(({ status, data }) => {
-      if (status === 200) {
-        setArticles([...data.articles]);
+    apiGet(`articles?topic=${topic}`)
+      .then(({ status, data }) => {
+        if (status === 200) {
+          setArticles([...data.articles]);
+          setIsLoading(false);
+        }
+      })
+      .catch(() => {
         setIsLoading(false);
-      }
-    });
+      });
   }, [topic]);
 
-  return isLoading ? (
-    <>
-      <p>Loading articles...</p>
-    </>
-  ) : (
+  if (isLoading) return <p>Loading articles...</p>;
+  if (articles.length === 0) return <BadRoute title="404: Topic not found" />;
+  return (
     <>
       <header className="page-header">
         <Header title={topic[0].toUpperCase() + topic.substring(1)} />
