@@ -12,6 +12,7 @@ export default function CommentCard({ comment, user, setDeletedComment }) {
   const [disableButton, setDisableButton] = useState(false);
   const [disableDeleteButton, setDisableDeleteButton] = useState(false);
   const [isDeleteError, setIsDeleteError] = useState(null);
+  const [confirmedDeleted, setConfirmedDeleted] = useState(false);
 
   // handle upvoting/downvoting for comments
   const handleVote = (e) => {
@@ -36,7 +37,7 @@ export default function CommentCard({ comment, user, setDeletedComment }) {
       .then(() => {
         setError(null);
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Vote not applied!");
         setVotes(prevVotes);
         setDisableButton(false);
@@ -44,11 +45,12 @@ export default function CommentCard({ comment, user, setDeletedComment }) {
   };
 
   const handleDelete = (e) => {
-    setDisableDeleteButton(true);
     e.preventDefault();
+    setDisableDeleteButton(true);
+
     apiDelete(`comments/${comment.comment_id}`)
       .then(({ status }) => {
-        setDeletedComment(true);
+        setConfirmedDeleted(true);
       })
       .catch(() => {
         setDisableDeleteButton(false);
@@ -58,36 +60,42 @@ export default function CommentCard({ comment, user, setDeletedComment }) {
 
   return (
     <section className="comment-card">
-      <div className="comment-top">
-        <div className="comment-author">
-          <p>{comment.author}</p>
-          <p>{created}</p>
-        </div>
-        <div className="comment-votes">
-          <button id="upvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
-            <i className="fa-solid fa-arrow-up" id="upvote"></i>
-          </button>
-          <p>{votes}</p>
-          <button id="downvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
-            <i className="fa-solid fa-arrow-down"></i>
-          </button>
-          {error ? <p>{error}</p> : ""}
-        </div>
-      </div>
-      <div className="comment-body">
-        <p>{comment.body}</p>
-      </div>
-      {user.name === comment.author ? (
-        <>
-          <div className="delete-cont">
-            <button id="delete" onClick={(e) => handleDelete(e)} disabled={disableDeleteButton ? "disabled" : ""}>
-              <i className="fa-solid fa-trash"></i>
-            </button>
-          </div>
-          <div className="delete-error">{isDeleteError ? isDeleteError : ""}</div>
-        </>
+      {confirmedDeleted ? (
+        <p className="comment-deleted">Comment deleted </p>
       ) : (
-        ""
+        <>
+          <div className="comment-top">
+            <div className="comment-author">
+              <p>{comment.author}</p>
+              <p>{created}</p>
+            </div>
+            <div className="comment-votes">
+              <button id="upvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
+                <i className="fa-solid fa-arrow-up" id="upvote"></i>
+              </button>
+              <p>{votes}</p>
+              <button id="downvote" onClick={(e) => handleVote(e)} disabled={disableButton ? "disabled" : ""}>
+                <i className="fa-solid fa-arrow-down"></i>
+              </button>
+              {error ? <p>{error}</p> : ""}
+            </div>
+          </div>
+          <div className="comment-body">
+            <p>{comment.body}</p>
+          </div>
+          {user.name === comment.author ? (
+            <>
+              <div className="delete-cont">
+                <button id="delete" onClick={(e) => handleDelete(e)} disabled={disableDeleteButton ? "disabled" : ""}>
+                  <i className="fa-solid fa-trash"></i>
+                </button>
+              </div>
+              <div className="delete-error">{isDeleteError ? isDeleteError : ""}</div>
+            </>
+          ) : (
+            ""
+          )}
+        </>
       )}
     </section>
   );

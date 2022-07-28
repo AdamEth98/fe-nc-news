@@ -73,5 +73,12 @@ form {
   background: none;
   border: none;
   font-size: 1.2rem;
-  color:rgb(220, 69, 69)
+  color:rgb(232, 101, 101)
+}
+
+.comment-deleted {
+  padding: 0.5rem;
+  background-color: rgb(232, 101, 101);
+  color: #fff;
+  border-radius: 10px;
 }
