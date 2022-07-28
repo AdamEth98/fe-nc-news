@@ -46,10 +46,13 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.article-card-align {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.article-read-link {
+  background-color: #264653;
+  color: #fff;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 5px;
 }

@@ -20,7 +20,9 @@ export default function ArticleCard({ article }) {
         </div>
         <div className="article-card-link">
           <p>{article.comment_count} Comments</p>
-          <Link to={`/article/${article.article_id}`}>Read Article -&#62;</Link>
+          <Link className="article-read-link" to={`/article/${article.article_id}`}>
+            Read Article -&#62;
+          </Link>
         </div>
       </section>
     </article>

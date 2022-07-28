@@ -42,8 +42,8 @@ export default function CommentForm({ user, id, setNewComment }) {
             Add
           </button>
         </div>
-        {error ? <p>{error}</p> : ""}
-        {addedComment ? <p>Comment added.</p> : ""}
+        {error ? <p className="error">{error}</p> : ""}
+        {addedComment ? <p className="success">Comment added.</p> : ""}
       </fieldset>
     </form>
   );

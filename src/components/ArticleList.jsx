@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
 import { apiGet } from "../utils/api";
 import Sort from "./Sort";
+import Loading from "./Loading";
 
 export default function ArticleList() {
   // store all articles
@@ -22,7 +23,7 @@ export default function ArticleList() {
 
   return isLoading ? (
     <>
-      <p>Loading articles...</p>
+      <Loading msg="Loading articles..." />
     </>
   ) : (
     <>

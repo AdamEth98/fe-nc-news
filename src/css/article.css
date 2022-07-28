@@ -45,6 +45,7 @@
 .article-topic-text {
   color: #f4a261;
   font-weight: 700;
+  font-style: normal;
 }
 
 .date {
@@ -70,12 +71,4 @@
   border: none;
   outline: none;
   font-size: 1.25rem;
-}
-
-.upvoted {
-  color: #2a9d8f;
-}
-
-.downvoted {
-  color: #e76f51;
 }

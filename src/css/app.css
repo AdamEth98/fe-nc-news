@@ -10,7 +10,7 @@ body {
 
 .page-header {
   font-size: 1.75rem;
-  padding: 0.5rem 0.5rem 0 0.5rem;
+  padding: 0.5rem 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -22,8 +22,34 @@ body {
   align-items: center;
 }
 
+.upvoted {
+  color: #2a9d8f;
+}
+
+.downvoted {
+  color: #e76f51;
+}
+
+.loading-cont {
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+i {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 1000px) {
   .container {
     width: 80%;
   }
 }
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 60%;
+  }
+}
+
