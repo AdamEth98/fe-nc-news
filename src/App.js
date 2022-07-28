@@ -13,7 +13,12 @@ import ArticlesByTopic from "./pages/ArticlesByTopic";
 import Article from "./pages/Article";
 
 export default function App() {
-  const [user, setUser] = useState("grumpy19");
+  const [user, setUser] = useState({
+    username: "grumpy19",
+    name: "Paul Grump",
+    avatar_url:
+      "https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013",
+  });
 
   return (
     <BrowserRouter>

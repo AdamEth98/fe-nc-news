@@ -12,7 +12,7 @@ export default function CommentForm({ user, id, setNewComment }) {
     if (user && e.target[1].value) {
       setDisableSubmit(true);
       const requestBody = {
-        username: user,
+        username: user.username,
         body: e.target[1].value,
       };
 

@@ -62,3 +62,23 @@ form {
   box-sizing: border-box;
   font-size: 1.2rem;
 }
+
+.delete-cont {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#delete {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color:rgb(232, 101, 101)
+}
+
+.comment-deleted {
+  padding: 0.5rem;
+  background-color: rgb(232, 101, 101);
+  color: #fff;
+  border-radius: 10px;
+}

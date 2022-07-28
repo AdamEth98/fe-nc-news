@@ -1,5 +1,3 @@
-import Sort from "./Sort";
-
 export default function Header({ title }) {
   return (
     <>

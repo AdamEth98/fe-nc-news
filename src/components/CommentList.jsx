@@ -26,7 +26,7 @@ export default function CommentList({ id, user }) {
       <h2 className="comment-header">Comments</h2>
       {user && <CommentForm user={user} setNewComment={setNewComment} id={id} />}
       {comments.map((comment) => {
-        return <CommentCard key={comment.comment_id} comment={comment} />;
+        return <CommentCard user={user} key={comment.comment_id} comment={comment} />;
       })}
     </>
   );
