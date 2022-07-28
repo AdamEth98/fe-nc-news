@@ -1,5 +1,5 @@
-import apiCall from "../utils/apiCall";
 import "../css/sort.css";
+import { apiGet } from "../utils/api";
 
 export default function Sort({ setArticles }) {
   const handleChange = (e) => {
@@ -20,7 +20,7 @@ export default function Sort({ setArticles }) {
       // otherwise, just make a new api request with a suitable query
     } else {
       const query = `?sort_by=${parsedQuery[0]}&order=${parsedQuery[1]}`;
-      apiCall("articles", query).then(({ data }) => {
+      apiGet("articles", query).then(({ data }) => {
         setArticles([...data.articles]);
       });
     }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import apiCall from "../utils/apiCall";
+import { apiGet } from "../utils/api";
 import CommentCard from "./CommentCard";
 import "../css/comments.css";
 import CommentForm from "./CommentForm";
@@ -10,13 +10,14 @@ export default function CommentList({ id, user }) {
 
   useEffect(() => {
     if (id) {
-      apiCall(`articles/${id}/comments`).then(({ data }) => {
+      apiGet(`articles/${id}/comments`).then(({ data }) => {
         // sort comments by date (asc)
         const sortedComments = data.comments.sort((a, b) => {
           return new Date(a.created_at) - new Date(b.created_at);
         });
 
         setComments([...sortedComments]);
+        setNewComment(false);
       });
     }
   }, [id, newComment]);

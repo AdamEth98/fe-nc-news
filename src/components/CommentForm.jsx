@@ -1,5 +1,5 @@
 import { useState } from "react";
-import apiPost from "../utils/apiPost";
+import { apiPost } from "../utils/api";
 
 export default function CommentForm({ user, id, setNewComment }) {
   const [error, setIsError] = useState(null);
