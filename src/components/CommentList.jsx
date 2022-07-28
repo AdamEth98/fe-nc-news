@@ -17,6 +17,7 @@ export default function CommentList({ id, user }) {
         });
 
         setComments([...sortedComments]);
+        setNewComment(false);
       });
     }
   }, [id, newComment]);
