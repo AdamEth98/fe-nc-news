@@ -5,7 +5,9 @@ import Header from "../components/Header";
 export default function Homepage({ api }) {
   return (
     <>
-      <Header title="Home" />
+      <header className="page-header">
+        <Header title="Recent Articles" />
+      </header>
       <ArticleList api={api} />
     </>
   );

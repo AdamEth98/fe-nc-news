@@ -26,10 +26,14 @@ export default function ArticleList() {
     </>
   ) : (
     <>
-      <Sort setArticles={setArticles} />
-      {articles.map((article) => {
-        return <ArticleCard key={article.article_id} article={article} />;
-      })}
+      <section className="sort-align">
+        <Sort setArticles={setArticles} />
+      </section>
+      <main className="article-card-align">
+        {articles.map((article) => {
+          return <ArticleCard key={article.article_id} article={article} />;
+        })}
+      </main>
     </>
   );
 }

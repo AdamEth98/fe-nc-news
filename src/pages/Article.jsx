@@ -28,8 +28,10 @@ export default function Article({ user }) {
     </>
   ) : (
     <>
-      <Header title={article.title} />
-      <main>
+      <header className="page-header">
+        <Header title={article.title} />
+      </header>
+      <main className="article-card-align">
         <ArticleFull article={article} />
         <CommentList id={article.article_id} user={user} />
       </main>

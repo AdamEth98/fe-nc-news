@@ -29,9 +29,13 @@ export default function ArticlesByTopic() {
     </>
   ) : (
     <>
-      <Header title={topic[0].toUpperCase() + topic.substring(1)} />
-      <Sort setArticles={setArticles} />
-      <main>
+      <header className="page-header">
+        <Header title={topic[0].toUpperCase() + topic.substring(1)} />
+      </header>
+      <section className="sort-align">
+        <Sort setArticles={setArticles} />
+      </section>
+      <main className="article-card-align">
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
         })}

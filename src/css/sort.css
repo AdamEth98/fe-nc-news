@@ -1,5 +1,13 @@
 .select-cont {
-  width: 100%;
   padding: 0.5rem;
   box-sizing: border-box;
+}
+
+.select-cont > select {
+  padding: 0.25rem;
+}
+
+.sort-align {
+  display: flex;
+  justify-content: center;
 }

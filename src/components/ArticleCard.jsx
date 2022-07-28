@@ -3,7 +3,7 @@ import "../css/article-card.css";
 
 export default function ArticleCard({ article }) {
   return (
-    <article className="article-card">
+    <article className="article-card container">
       <section className="article-card-top">
         <h2 className="article-card-title">{article.title}</h2>
         <div className="article-card-middle">

@@ -26,8 +26,10 @@ export default function Topics() {
     </>
   ) : (
     <>
-      <Header title="Topics" />
-      <main>
+      <header className="page-header">
+        <Header title="Topics" />
+      </header>
+      <main className="article-card-align">
         <section className="container topic-card">
           {topics.map((topic) => {
             return <TopicCard key={topic.slug} topic={topic} />;
