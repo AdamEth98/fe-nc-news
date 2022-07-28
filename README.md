@@ -27,4 +27,4 @@ Fork and clone this repo, and then:
 
 This repo uses React for rendering, alongside react-router-dom in order to manage routing. All http requests are made using axios.
 
-All styling was done using vanilla CSS.
+All styling was done using vanilla CSS, with icons from FontAwesome.
