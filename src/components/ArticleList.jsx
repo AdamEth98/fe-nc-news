@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
-import apiCall from "../utils/apiCall";
+import { apiGet } from "../utils/api";
 import Sort from "./Sort";
 
 export default function ArticleList() {
@@ -12,7 +12,7 @@ export default function ArticleList() {
     // retrieve all articles from api
     setIsLoading(true);
 
-    apiCall("articles").then(({ status, data }) => {
+    apiGet("articles").then(({ status, data }) => {
       if (status === 200) {
         setArticles([...data.articles]);
         setIsLoading(false);

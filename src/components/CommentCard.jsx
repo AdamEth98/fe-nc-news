@@ -1,6 +1,5 @@
 import { useState } from "react";
-import apiPatch from "../utils/apiPatch";
-import apiDelete from "../utils/apiDelete";
+import { apiPatch, apiDelete } from "../utils/api";
 
 export default function CommentCard({ comment, user, setDeletedComment }) {
   // date substring

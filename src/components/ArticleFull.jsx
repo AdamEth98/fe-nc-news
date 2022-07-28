@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/article.css";
-import apiPatch from "../utils/apiPatch";
+import { apiPatch } from "../utils/api";
 
 export default function ArticleFull({ article }) {
   // store votes for optimistic rendering
